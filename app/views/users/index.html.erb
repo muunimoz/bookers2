@@ -1,8 +1,6 @@
-<div>
-  <%= flash[:notice] %>
-</div>
 
-<main>
+
+ <main>
   <p id="notice"></p>
   <div class="container px-5 px-sm-0">
     <div class="row">
@@ -46,25 +44,26 @@
           <%= f.submit 'Create Book' %>
         </div>
       <% end %>
-      
+
       <div class="col-md-8 offset-md-1 ">
-        <h2>Book detail</h2>
+        <h2>Users</h2>
         <table class="table table-hover table-inverse">
           <thead>
+            <tr>
+              <th>image</th>
+              <th>name</th>
+              <th></th>
+              <th colspan="3"></th>
+            </tr>
           </thead>
           <tbody>
-            <% @books.each do |book| %>
+            <% @users.each do |user| %>
               <tr>
-                <td><%= image_tag book.user.get_profile_image(100,100) %></td>
-                <td><%#= link_to user.name, book_path(book.id) %></td>
-                <td><%= link_to book.title, book_path(book.id) %></td>
-                <td><%= book.body %></td>
-                <% if @user == current_user %>
-                <td><%= link_to "Edit", edit_book_path(book.id), class: "btn btn-success" %></td>
-                <td><%= link_to "Delete", book_path(book.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-                </tr>
-              <% end %>
-              <% end %>
+                <td><%= image_tag user.get_profile_image(100,100) %></td>
+                <td><%= user.name %></td>
+                <td><%= link_to 'Show', user_path(@user.id) %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </div>
