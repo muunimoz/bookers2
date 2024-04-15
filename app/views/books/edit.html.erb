@@ -1,40 +1,4 @@
-<main>
-  <p id="notice"></p>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2>Editing Book</h2>
-        <% if @book.errors.any? %>
-        <%= @book.errors.count %>errors prohibited this obj from being saved:
-          <ul>
-            <% @book.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        <% end %>
-
-        <%= form_with model: @book do |f| %>
-          <div class="form-group">
-            <label for="inputTitle">Title</label>
-            <div>
-              <%= f.text_field :title, autofocus: true%>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="Opinion">Opinion</label>
-            <div>
-            <%= f.text_field :body %>
-            </div>
-          </div>
-          <div class="form-group">
-            <%#= link_to "Update Book", book_path(@book.id), class: "btn btn-success", method: :patch %>
-            <%= f.submit "Update Book" %>
-          </div>
-        <% end %>
-
-        <%= link_to 'Show', book_path(@book.id) %> |
-        <%= link_to 'Back', books_path %>
-      </div>
-    </div>
-  </div>
-</main>
+<%= render 'list', user: @user, book: @book %>
+  <%= link_to 'Show', book_path(@book.id) %> |
+  <%= link_to 'Back', books_path %>
+<%= render 'books/bottom' %>
